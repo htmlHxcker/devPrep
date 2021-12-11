@@ -1,0 +1,30 @@
+{
+	"name": "Dev Prep",
+	"version": "0.1.0",
+	"author": "htmlHxcker",
+	"manifest_version": 3,
+	"description": "An extension to help you prepare for technical interviews with flashcards.",
+	"background": {
+		"service_worker": "./background.js"
+	},
+	"options_page": "options.html",
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"16": "devPrep16.png",
+			"32": "devPrepd32.png",
+			"48": "devPrep48.png",
+			"128": "devPrep128.png"
+		}
+	},
+	"chrome_url_overrides": {
+		"newtab": "newtab.html"
+	},
+	"permissions": ["tabs", "storage"],
+	"icons": {
+		"16": "devPrep16.png",
+		"32": "devPrep32.png",
+		"48": "devPrep48.png",
+		"128": "devPrep128.png"
+	}
+}
