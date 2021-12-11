@@ -11,10 +11,10 @@
 	"action": {
 		"default_popup": "popup.html",
 		"default_icon": {
-			"16": "devPrep16.png",
-			"32": "devPrepd32.png",
-			"48": "devPrep48.png",
-			"128": "devPrep128.png"
+			"16": "./images/devPrep16.png",
+			"32": "./images/devPrepd32.png",
+			"48": "./images/devPrep48.png",
+			"128": "./images/devPrep128.png"
 		}
 	},
 	"chrome_url_overrides": {
@@ -22,9 +22,9 @@
 	},
 	"permissions": ["tabs", "storage"],
 	"icons": {
-		"16": "devPrep16.png",
-		"32": "devPrep32.png",
-		"48": "devPrep48.png",
-		"128": "devPrep128.png"
+		"16": "./images/devPrep16.png",
+		"32": "./images/devPrep32.png",
+		"48": "./images/devPrep48.png",
+		"128": "./images/devPrep128.png"
 	}
 }

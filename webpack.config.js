@@ -9,13 +9,10 @@ module.exports = {
 		historyApiFallback: true,
 	},
 	entry: {
-		popup: path.resolve(__dirname, './src/ui/popup/popup-index.js'),
-		options: path.resolve(__dirname, './src/ui/options/options-index.js'),
-		foreground: path.resolve(
-			__dirname,
-			'./src/ui/foreground/foreground-index.js'
-		),
-		newtab: path.resolve(__dirname, './src/ui/newtab/newtab-index.js'),
+		popup: path.resolve(__dirname, './src/ui/popup/Popup.js'),
+		options: path.resolve(__dirname, './src/ui/options/Options.js'),
+		foreground: path.resolve(__dirname, './src/ui/foreground/Foreground.js'),
+		newtab: path.resolve(__dirname, './src/ui/newtab/Newtab.js'),
 	},
 	output: {
 		filename: '[name].bundle.js',
@@ -24,7 +21,8 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.(js|.jsx)$/,
+				exclude: [/node_modules/],
 				use: [
 					{
 						loader: 'babel-loader',
@@ -68,12 +66,7 @@ module.exports = {
 			chunks: ['newtab'],
 		}),
 		new CopyWebpackPlugin({
-			patterns: [
-				{ from: 'src/manifest.json', to: '[name][ext]' },
-				{ from: 'src/background.js', to: '[name][ext]' },
-				{ from: 'src/scripts/inject-script.js', to: '[name][ext]' },
-				{ from: 'src/images/*.png', to: '[name][ext]' },
-			],
+			patterns: [{ from: 'public' }],
 		}),
 		new CleanWebpackPlugin(),
 	],
