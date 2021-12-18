@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import React from 'react';
+import './Card.css';
+import '../styles/utilities.css';
 
-const Card = ({ title, description }) => {
-	const [flipped, setFlipped] = useState(false);
-
-	const flipCard = () => {
-		setFlipped(!flipped);
-	};
-
+const Card = ({ card, isCardFlipped, flipCard }) => {
 	return (
-		<div onClick={flipCard}>
-			<h2>{title}</h2>
-			{flipped ? <p>{description}</p> : ''}
+		<div
+			onClick={flipCard}
+			className="card bg-secondary--light active-card flex text-center"
+		>
+			<div>
+				{isCardFlipped ? <p>{card.CARD_BACK} </p> : <h2>{card.CARD_FRONT}</h2>}
+			</div>
 		</div>
 	);
 };
