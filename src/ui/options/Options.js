@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const Foreground = () => {
-	return <h1>Foreground</h1>;
+const Options = () => {
+	return <h1>Options</h1>;
 };
 
-export default Foreground;
+export default Options;
 render(<Options />, document.getElementById('options'));
