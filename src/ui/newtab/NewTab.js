@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-
+import Carousel from '../../components/Carousel';
 import currentTime from '../../../public/scripts/currentTime';
 import '../../styles/index.css';
 import '../../styles/utilities.css';
 import './newtab.css';
 
+const cardsArray = [
+	{
+		CARD_FRONT: 'Hello World 1',
+		CARD_BACK: 'Lorem Ipsum',
+	},
+	{
+		CARD_FRONT: 'Hello World 2',
+		CARD_BACK: 'Lorem Ipsum',
+	},
+	{
+		CARD_FRONT: 'Hello World 3',
+		CARD_BACK: 'Lorem Ipsum',
+	},
+	{
+		CARD_FRONT: 'Hello World 4',
+		CARD_BACK: 'Lorem Ipsum',
+	},
+];
+
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
+	const [cards, setCards] = useState(cardsArray);
 
 	const options = {
 		weekday: 'long',
@@ -29,6 +49,9 @@ const NewTab = () => {
 					<h2 className="fs-900">{time}</h2>
 					<p>{DATE}</p>
 				</div>
+			</div>
+			<div className="flex container--card">
+				<Carousel cards={cards} />
 			</div>
 		</div>
 	);

@@ -1,0 +1,9 @@
+.carousel {
+	min-height: 13rem;
+	width: 100vw;
+	margin-top: 5rem;
+}
+.side-card {
+	height: 13rem;
+	min-width: 20%;
+}

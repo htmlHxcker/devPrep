@@ -6,14 +6,3 @@
 .container--card {
 	margin: 0 -2rem;
 }
-.floating-buttons {
-	position: relative;
-	top: 5rem;
-	left: -2rem;
-}
-.rounded-buttons {
-	display: inline-flex;
-	margin-inline: 1rem;
-	justify-content: center;
-	align-items: center;
-}
