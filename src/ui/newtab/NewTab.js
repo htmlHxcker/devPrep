@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
+import { IconContext } from 'react-icons';
+import { FiSliders, FiPlus } from 'react-icons/fi';
 import Carousel from '../../components/Carousel';
 import currentTime from '../../../public/scripts/currentTime';
 import '../../styles/index.css';
@@ -28,6 +30,7 @@ const cardsArray = [
 
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
+	const [showModal, setShowModal] = useState(false);
 	const [cards, setCards] = useState(cardsArray);
 
 	const options = {
