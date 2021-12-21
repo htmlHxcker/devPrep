@@ -11,18 +11,15 @@ const Carousel = ({ cards }) => {
 	const nextCard = () => {
 		setCurrentCard(currentCard === length - 1 ? 0 : currentCard + 1);
 		setFlipped(false);
-		console.log(flipped);
 	};
 
 	const prevCard = () => {
 		setCurrentCard(currentCard === 0 ? length - 1 : currentCard - 1);
 		setFlipped(false);
-		console.log(flipped);
 	};
 
 	const flipCard = () => {
 		setFlipped(!flipped);
-		console.log(flipped);
 	};
 	return (
 		<div className="carousel flex align-items-center justify-content-sb">
