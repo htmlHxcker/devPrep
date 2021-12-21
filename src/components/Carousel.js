@@ -21,6 +21,19 @@ const Carousel = ({ cards }) => {
 	const flipCard = () => {
 		setFlipped(!flipped);
 	};
+	document.addEventListener('keydown', (event) => {
+		switch (event.code) {
+			case 'ArrowRight':
+				nextCard();
+				break;
+			case 'ArrowLeft':
+				prevCard();
+				break;
+			case 'Space':
+				flipCard();
+				break;
+		}
+	});
 	return (
 		<div className="carousel flex align-items-center justify-content-sb">
 			<div className="card side-card" onClick={prevCard}></div>
