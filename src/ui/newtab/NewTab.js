@@ -1,37 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
+import 'regenerator-runtime/runtime.js';
 import { IconContext } from 'react-icons';
 import { FiSliders, FiPlus } from 'react-icons/fi';
 import Carousel from '../../components/Carousel';
+import AddPrepCard from '../../components/AddPrepCard';
 import currentTime from '../../../public/scripts/currentTime';
+import useField from '../utils/useField';
 import '../../styles/index.css';
 import '../../styles/utilities.css';
 import './newtab.css';
-import AddPrepCard from '../../components/AddPrepCard';
-
-const cardsArray = [
-	{
-		CARD_FRONT: 'Hello World 1',
-		CARD_BACK: 'Lorem Ipsum',
-	},
-	{
-		CARD_FRONT: 'Hello World 2',
-		CARD_BACK: 'Lorem Ipsum',
-	},
-	{
-		CARD_FRONT: 'Hello World 3',
-		CARD_BACK: 'Lorem Ipsum',
-	},
-	{
-		CARD_FRONT: 'Hello World 4',
-		CARD_BACK: 'Lorem Ipsum',
-	},
-];
 
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
 	const [showModal, setShowModal] = useState(false);
-	const [cards, setCards] = useState(cardsArray);
+	const [cards, setCards] = useState([]);
+	const username = useField('text');
+	useEffect(() => {
+		async function getCards() {
+			await chrome.storage.sync.get('cards', (result) => {
+				setCards(result.cards);
+			});
+		}
+		getCards();
+	}, []);
 
 	const options = {
 		weekday: 'long',
@@ -51,7 +43,7 @@ const NewTab = () => {
 			<div className="container container--newtab">
 				<div className="flex justify-content-sb">
 					<div>
-						<h2 className="ff-cardo fs-900">Hello, User Name</h2>
+						<h2 className="ff-cardo fs-900">Hello Username</h2>
 					</div>
 					<div className="text-right">
 						<h2 className="fs-900">{time}</h2>
@@ -59,7 +51,11 @@ const NewTab = () => {
 					</div>
 				</div>
 				<div className="flex container--card">
-					<Carousel cards={cards} />
+					{cards.length < 1 ? (
+						<h3 className="text-center">Loading Cards...</h3>
+					) : (
+						<Carousel cards={cards} />
+					)}
 				</div>
 
 				<div className="text-right floating-buttons">

@@ -8,11 +8,16 @@ const AddPrepCard = ({ modalState, cardState }) => {
 	const cardBack = useField('text');
 
 	function addPrepCard() {
-		let newCards = {
-			CARD_FRONT: cardFront.value,
-			CARD_BACK: cardBack.value,
-		};
-		cardState.setCards([...cardState.cards, newCards]);
+		let updatedCards = [
+			...cardState.cards,
+			{
+				CARD_FRONT: cardFront.value,
+				CARD_BACK: cardBack.value,
+			},
+		];
+		chrome.storage.sync.set({ cards: updatedCards }, () => {
+			cardState.setCards(updatedCards);
+		});
 		modalState.setShowModal(false);
 	}
 	return (
