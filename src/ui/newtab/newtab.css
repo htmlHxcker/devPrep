@@ -11,9 +11,11 @@
 	top: 5rem;
 	left: -2rem;
 }
-.rounded-buttons {
+.newtab-buttons {
 	display: inline-flex;
 	margin-inline: 1rem;
 	justify-content: center;
 	align-items: center;
+	--primary-btn-height: 4rem;
+	--primary-btn-width: 12rem;
 }
