@@ -21,17 +21,36 @@ const AddPrepCard = ({ modalState, cardState }) => {
 		modalState.setShowModal(false);
 	}
 	return (
-		<div
-			className={`modal bg-primary--light flex ${
-				modalState.showModal ? '' : 'hide-modal'
-			}`}
-		>
-			<input {...cardFront} placeholder="Text on the front of the card" />
+		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
+			<label htmlFor="cardFront" className="fs-600">
+				Front of the Card
+			</label>
+			<input
+				{...cardFront}
+				placeholder="What does HTML mean?"
+				name="cardFront"
+				className="text-input"
+			/>
+			<label htmlFor="cardBack" className="fs-600">
+				Back of the Card
+			</label>
 			<input
 				{...cardBack}
-				placeholder="Answer to text on the front of the card"
+				placeholder="Hyper Text Markup Language"
+				name="cardBack"
+				className="text-input"
 			/>
-			<button onClick={addPrepCard}>Add PrepCard</button>
+			<button onClick={addPrepCard} className="primary-btn bg-pink-flare">
+				Add PrepCard
+			</button>
+			<button
+				onClick={() => {
+					modalState.setShowModal(false);
+				}}
+				className="primary-btn bg-pink-flare"
+			>
+				Cancel
+			</button>
 		</div>
 	);
 };
