@@ -6,10 +6,16 @@ const Card = ({ card, isCardFlipped, flipCard }) => {
 	return (
 		<div
 			onClick={flipCard}
-			className="card bg-secondary--light active-card flex text-center"
+			className="card bg-carousel-pink active-card flex text-center"
 		>
 			<div>
-				{isCardFlipped ? <p>{card.CARD_BACK} </p> : <h2>{card.CARD_FRONT}</h2>}
+				{isCardFlipped ? (
+					<div>
+						<p>{card.CARD_BACK} </p>
+					</div>
+				) : (
+					<h2>{card.CARD_FRONT}</h2>
+				)}
 			</div>
 		</div>
 	);
