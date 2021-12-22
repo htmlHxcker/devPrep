@@ -8,6 +8,10 @@ const AddPrepCard = ({ modalState, cardState }) => {
 	const cardBack = useField('text');
 
 	function addPrepCard() {
+		if (!cardFront.value || !cardBack.value) {
+			alert('You have to fill the form to create a card!');
+			return;
+		}
 		let updatedCards = [
 			...cardState.cards,
 			{
@@ -22,8 +26,8 @@ const AddPrepCard = ({ modalState, cardState }) => {
 	}
 	return (
 		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
-			<label htmlFor="cardFront" className="fs-600">
-				Front of the Card
+			<label htmlFor="cardFront" className="fs-600 ff-cardo">
+				Front of the Card*
 			</label>
 			<input
 				{...cardFront}
@@ -31,8 +35,8 @@ const AddPrepCard = ({ modalState, cardState }) => {
 				name="cardFront"
 				className="text-input"
 			/>
-			<label htmlFor="cardBack" className="fs-600">
-				Back of the Card
+			<label htmlFor="cardBack" className="fs-600 ff-cardo">
+				Back of the Card*
 			</label>
 			<input
 				{...cardBack}
@@ -40,14 +44,14 @@ const AddPrepCard = ({ modalState, cardState }) => {
 				name="cardBack"
 				className="text-input"
 			/>
-			<button onClick={addPrepCard} className="primary-btn bg-pink-flare">
+			<button onClick={addPrepCard} className="primary-btn">
 				Add PrepCard
 			</button>
 			<button
 				onClick={() => {
 					modalState.setShowModal(false);
 				}}
-				className="primary-btn bg-pink-flare"
+				className="primary-btn close-modal-btn"
 			>
 				Cancel
 			</button>
