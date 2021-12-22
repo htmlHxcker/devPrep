@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Josefin+Sans:ital@0;1&display=swap');
 
 :root {
-	/* dark-mode colors */
-	--clr-comet: 236, 14%, 37%;
-	--clr-regal-blue: 211, 71%, 24%;
-	--clr-light-burgundy: 340, 49%, 45%;
-
 	/*light-mode colors */
-	--clr-primary--light: 170, 33%, 93%;
-	--clr-secondary--light: 350, 50%, 93%;
-	--clr-accent--light: 0, 0%, 5%;
+	--clr-seashell: 170, 33%, 93%;
+	--clr-carousel-pink: 350, 50%, 93%;
+	--clr-pink-flare: 350, 49%, 83%;
+	--clr-woodsmoke: 0, 0%, 5%;
 
 	/* font sizes */
 	--fs-400: 1.125rem;
@@ -75,42 +71,31 @@
 }
 
 /* Colors */
-.bg-comet {
-	background-color: hsl(var(--clr-comet));
+
+.bg-seashell {
+	background-color: hsl(var(--clr-seashell));
 }
-.bg-regal-blue {
-	background-color: hsl(var(--clr-regal-blue));
+.bg-pink-flare {
+	background-color: hsl(var(--clr-pink-flare));
 }
-.bg-light-burgundy {
-	background-color: hsl(var(--clr-light-burgundy));
+.bg-carousel-pink {
+	background-color: hsl(var(--clr-carousel-pink));
 }
-.bg-accent--light {
-	background-color: hsl(var(--clr-accent--light));
-}
-.bg-secondary--light {
-	background-color: hsl(var(--clr-secondary--light));
-}
-.bg-primary--light {
-	background-color: hsl(var(--clr-primary--light));
+.bg-woodsmoke {
+	background-color: hsl(var(--clr-woodsmoke));
 }
 
-.text-comet {
-	color: hsl(var(--clr-comet));
+.text-seashell {
+	color: hsl(var(--clr-seashell));
 }
-.text-regal-blue {
-	color: hsl(var(--clr-regal-blue));
+.text-carousel-pink {
+	color: hsl(var(--clr-carousel-pink));
 }
-.text-light-burgundy {
-	color: hsl(var(--clr-light-burgundy));
+.text-pink-flare {
+	color: hsl(var(--clr-pink-flare));
 }
-.text-accent--light {
-	color: hsl(var(--clr-accent--light));
-}
-.text-secondary--light {
-	color: hsl(var(--clr-secondary--light));
-}
-.text-primary--light {
-	color: hsl(var(--clr-primary--light));
+.text-woodsmoke {
+	color: hsl(var(--clr-woodsmoke));
 }
 
 /* Typography */
@@ -147,4 +132,35 @@
 }
 .text-right {
 	text-align: right;
+}
+
+/* Forms and Inputs */
+
+.text-input {
+	width: 100%;
+	height: 20%;
+	border: 0;
+	border-bottom: solid 3px hsl(var(--clr-woodsmoke));
+	background: none;
+}
+.text-input::placeholder {
+	text-align: center;
+}
+.text-input:hover {
+	border-bottom: solid 3px hsl(var(--clr-pink-flare));
+}
+.text-input:focus {
+	outline: none;
+}
+
+/* Buttons */
+.primary-btn {
+	width: var(--primary-btn-width, 100%);
+	height: var(--primary-btn-height, 3rem);
+	background-color: hsl(var(--clr-primary-btn, 350, 49%, 83%));
+	color: hsl(var(--clr-woodsmoke));
+}
+.primary-btn:hover {
+	background: none;
+	border: solid 1px hsl(var(--clr-primary-btn, 350, 49%, 83%));
 }

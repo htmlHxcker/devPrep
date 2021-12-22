@@ -26,8 +26,8 @@ picture {
 body {
 	font-family: var(--ff-josefin-sans);
 	font-size: var(--fs-400);
-	color: hsl(var(--clr-accent--light));
-	background-color: hsl(var(--clr-primary--light));
+	color: hsl(var(--clr-woodsmoke));
+	background-color: hsl(var(--clr-seashell));
 	line-height: 1.5;
 	max-height: 100vh;
 }
