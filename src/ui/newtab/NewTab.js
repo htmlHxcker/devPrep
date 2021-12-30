@@ -8,18 +8,16 @@ import currentTime from '../../../public/scripts/currentTime';
 import '../../styles/index.css';
 import '../../styles/utilities.css';
 import './newtab.css';
+import { getStorage } from '../../utils/storage';
 
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
 	const [showModal, setShowModal] = useState(false);
 	const [cards, setCards] = useState([]);
+	const [settings, setsettings] = useState([]);
 	useEffect(() => {
-		async function getCards() {
-			await chrome.storage.sync.get('cards', (result) => {
-				setCards(result.cards);
-			});
-		}
-		getCards();
+		getStorage('cards', setCards);
+		getStorage('settings', setsettings);
 	}, []);
 
 	const options = {
@@ -39,7 +37,7 @@ const NewTab = () => {
 		<div className="container container--newtab">
 			<div className="flex justify-content-sb">
 				<div>
-					<h2 className="ff-cardo fs-900">Hello, Username</h2>
+					<h2 className="ff-cardo fs-900">Hello{`, ${settings.username}`}</h2>
 				</div>
 				<div className="text-right">
 					<h2 className="fs-900">{time}</h2>
