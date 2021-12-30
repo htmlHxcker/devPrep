@@ -53,10 +53,14 @@ let initialCards = [
 		PROFICIENCY: 0,
 	},
 ];
+let initialSettings = {
+	import: [],
+	username: '',
+};
 
 chrome.runtime.onInstalled.addListener(() => {
-	let sortedCards = initialCards.sort((a, b) => a.PROFICIENCY - b.PROFICIENCY);
-	chrome.storage.sync.set({ cards: sortedCards });
+	chrome.storage.sync.set({ cards: initialCards });
+	chrome.storage.sync.set({ settings: initialSettings });
 	let optionsUrl = chrome.runtime.getURL('/options.html');
 	chrome.tabs.create({
 		url: optionsUrl,
