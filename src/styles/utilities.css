@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Josefin+Sans:ital@0;1&display=swap');
 
 :root {
-	/*light-mode colors */
+	/*colors */
 	--clr-seashell: 170, 33%, 93%;
 	--clr-carousel-pink: 350, 50%, 93%;
 	--clr-pink-flare: 350, 49%, 83%;
@@ -137,8 +137,8 @@
 /* Forms and Inputs */
 
 .text-input {
-	width: 100%;
-	height: 20%;
+	width: var(--input-width, 100%);
+	height: var(--input-height, 20%);
 	border: 0;
 	border-bottom: solid 3px hsl(var(--clr-woodsmoke));
 	background: none;
