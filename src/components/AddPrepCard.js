@@ -2,6 +2,7 @@ import React from 'react';
 import useField from '../utils/useField';
 import './AddPrepCard.css';
 import '../styles/utilities.css';
+import { setStorage } from '../utils/storage';
 
 const AddPrepCard = ({ modalState, cardState }) => {
 	const cardFront = useField('text');
@@ -19,15 +20,14 @@ const AddPrepCard = ({ modalState, cardState }) => {
 				CARD_BACK: cardBack.value,
 			},
 		];
-		chrome.storage.sync.set({ cards: updatedCards }, () => {
-			cardState.setCards(updatedCards);
-		});
+
+		setStorage({ cards: updatedCards }, cardState.setCards(updatedCards));
 		modalState.setShowModal(false);
 	}
 	return (
 		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
 			<label htmlFor="cardFront" className="fs-600 ff-cardo">
-				Front of the Card*
+				Front of the Card
 			</label>
 			<input
 				{...cardFront}
@@ -36,7 +36,7 @@ const AddPrepCard = ({ modalState, cardState }) => {
 				className="text-input"
 			/>
 			<label htmlFor="cardBack" className="fs-600 ff-cardo">
-				Back of the Card*
+				Back of the Card
 			</label>
 			<input
 				{...cardBack}
