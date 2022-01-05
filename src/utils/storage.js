@@ -9,7 +9,8 @@ export const setStorage = (item, callback) => {
 };
 export const getStorage = async (itemName, callback) => {
 	if (callback === undefined) {
-		chrome.storage.sync.get(itemName);
+		let item = await chrome.storage.sync.get(itemName);
+		return item;
 	} else {
 		await chrome.storage.sync.get(itemName, (result) => {
 			callback(result[itemName]);
