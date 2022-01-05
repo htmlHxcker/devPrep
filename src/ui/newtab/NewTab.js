@@ -14,10 +14,11 @@ const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
 	const [showModal, setShowModal] = useState(false);
 	const [cards, setCards] = useState([]);
-	const [settings, setsettings] = useState([]);
+	const [settings, setSettings] = useState([]);
+
 	useEffect(() => {
 		getStorage('cards', setCards);
-		getStorage('settings', setsettings);
+		getStorage('settings', setSettings);
 	}, []);
 
 	const options = {
