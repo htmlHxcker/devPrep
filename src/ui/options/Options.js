@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Formik, Field, Form } from 'formik';
+import 'regenerator-runtime/runtime.js';
 import '../../styles/utilities.css';
 import '../../styles/index.css';
 import './options.css';
@@ -12,6 +13,7 @@ const Options = () => {
 			<Formik
 				initialValues={{
 					import: [],
+					contextMenu: 'YES',
 					username: '',
 				}}
 				onSubmit={(values) => {
@@ -48,7 +50,7 @@ const Options = () => {
 							</label>
 							<label>
 								<Field type="radio" name="contextMenu" value="NO" />
-								NO
+								No
 							</label>
 						</div>
 					</div>
