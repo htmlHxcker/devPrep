@@ -4,7 +4,7 @@ import './AddPrepCard.css';
 import '../styles/utilities.css';
 import { setStorage } from '../utils/storage';
 
-const AddPrepCard = ({ modalState, cardState }) => {
+const AddPrepCard = ({ cardState }) => {
 	const cardFront = useField('text');
 	const cardBack = useField('text');
 
@@ -25,8 +25,8 @@ const AddPrepCard = ({ modalState, cardState }) => {
 		modalState.setShowModal(false);
 	}
 	return (
-		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
-			<label htmlFor="cardFront" className="fs-600 ff-cardo">
+		<div className="flex form--container">
+			<label htmlFor="cardFront" className="fs-500 ff-cardo">
 				Front of the Card
 			</label>
 			<input
@@ -35,7 +35,7 @@ const AddPrepCard = ({ modalState, cardState }) => {
 				name="cardFront"
 				className="text-input"
 			/>
-			<label htmlFor="cardBack" className="fs-600 ff-cardo">
+			<label htmlFor="cardBack" className="fs-500 ff-cardo">
 				Back of the Card
 			</label>
 			<input
@@ -46,14 +46,6 @@ const AddPrepCard = ({ modalState, cardState }) => {
 			/>
 			<button onClick={addPrepCard} className="primary-btn">
 				Add PrepCard
-			</button>
-			<button
-				onClick={() => {
-					modalState.setShowModal(false);
-				}}
-				className="primary-btn close-modal-btn"
-			>
-				Cancel
 			</button>
 		</div>
 	);
