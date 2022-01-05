@@ -1,17 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import 'regenerator-runtime/runtime.js';
 import { Formik, Field, Form } from 'formik';
 import '../../styles/utilities.css';
 import '../../styles/index.css';
 import './options.css';
-import { getStorage, setStorage } from '../../utils/storage';
+import { setStorage } from '../../utils/storage';
 
 const Options = () => {
 	return (
 		<div>
 			<Formik
-				initialValues={getStorage('settings')}
+				initialValues={{
+					import: [],
+					username: '',
+				}}
 				onSubmit={(values) => {
 					setStorage({ settings: values });
 					console.log(values);
@@ -37,11 +39,23 @@ const Options = () => {
 								className="text-input username"
 							/>
 						</label>
+
+						<div id="radio-group">Show PrepCards in Context Menu</div>
+						<div role="group" aria-labelledby="radio-group">
+							<label>
+								<Field type="radio" name="contextMenu" value="YES" />
+								Yes
+							</label>
+							<label>
+								<Field type="radio" name="contextMenu" value="NO" />
+								NO
+							</label>
+						</div>
 					</div>
 					<div className="import-options bg-carousel-pink panel">
 						<h2>Import Options</h2>
 						<div id="checkbox-group">
-							Check the languages that you want to import prepCards for.
+							Check the boxes of the languages you want to import prepCards for.
 						</div>
 						<div role="group" aria-labelledby="checkbox-group">
 							<label>
