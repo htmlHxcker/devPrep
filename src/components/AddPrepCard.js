@@ -22,7 +22,6 @@ const AddPrepCard = ({ cardState }) => {
 		];
 
 		setStorage({ cards: updatedCards }, cardState.setCards(updatedCards));
-		modalState.setShowModal(false);
 	}
 	return (
 		<div className="flex form--container">
