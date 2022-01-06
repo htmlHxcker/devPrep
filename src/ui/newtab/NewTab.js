@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import 'regenerator-runtime/runtime.js';
 import { FiSliders, FiPlus } from 'react-icons/fi';
 import Carousel from '../../components/Carousel';
-import AddPrepCard from '../../components/AddPrepCard';
+import AddPrepCardModal from '../../components/AddPrepCardModal';
 import currentTime from '../../../public/scripts/currentTime';
 import '../../styles/index.css';
 import '../../styles/utilities.css';
@@ -64,7 +64,7 @@ const NewTab = () => {
 				</a>
 			</div>
 
-			<AddPrepCard
+			<AddPrepCardModal
 				modalState={{ showModal, setShowModal }}
 				cardState={{ cards, setCards }}
 			/>
