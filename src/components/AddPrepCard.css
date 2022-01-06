@@ -1,7 +1,7 @@
 .form--container {
 	height: 100%;
 	width: 100%;
-	padding: 3rem;
+
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
