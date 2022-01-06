@@ -1,5 +1,6 @@
 import React from 'react';
 import useField from '../utils/useField';
+import AddPrepCard from './AddPrepCard';
 import './AddPrepCardModal.css';
 import '../styles/utilities.css';
 import { setStorage } from '../utils/storage';
@@ -26,27 +27,7 @@ const AddPrepCardModal = ({ modalState, cardState }) => {
 	}
 	return (
 		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
-			<label htmlFor="cardFront" className="fs-600 ff-cardo">
-				Front of the Card
-			</label>
-			<input
-				{...cardFront}
-				placeholder="What does HTML mean?"
-				name="cardFront"
-				className="text-input"
-			/>
-			<label htmlFor="cardBack" className="fs-600 ff-cardo">
-				Back of the Card
-			</label>
-			<input
-				{...cardBack}
-				placeholder="Hyper Text Markup Language"
-				name="cardBack"
-				className="text-input"
-			/>
-			<button onClick={addPrepCard} className="primary-btn">
-				Add PrepCard
-			</button>
+			<AddPrepCard />
 			<button
 				onClick={() => {
 					modalState.setShowModal(false);
