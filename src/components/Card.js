@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css';
 import '../styles/utilities.css';
+import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 
 const Card = ({ card, isCardFlipped, flipCard }) => {
 	return (
@@ -8,15 +9,22 @@ const Card = ({ card, isCardFlipped, flipCard }) => {
 			onClick={flipCard}
 			className="card bg-carousel-pink active-card flex text-center"
 		>
-			<div>
-				{isCardFlipped ? (
-					<div>
-						<p>{card.CARD_BACK} </p>
+			{isCardFlipped ? (
+				<div>
+					<div className="text-right flex modify-icons">
+						<span>
+							<FiEdit2 size={25} />
+						</span>
+						<span>
+							<FiTrash2 size={25} color="red" />
+						</span>
 					</div>
-				) : (
-					<h2>{card.CARD_FRONT}</h2>
-				)}
-			</div>
+
+					<p>{card.CARD_BACK} </p>
+				</div>
+			) : (
+				<h2>{card.CARD_FRONT}</h2>
+			)}
 		</div>
 	);
 };
