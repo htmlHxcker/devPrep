@@ -85,7 +85,7 @@ const Options = () => {
 						<h2>Extras</h2>
 						<button className="primary-btn contribute-btn text-seashell">
 							<a
-								href="https://github.com/htmlHxcker/devPrep"
+								href="https://github.com/htmlHxcker/PrepCard"
 								target="_blank"
 								rel="noopener noreferrer"
 							>

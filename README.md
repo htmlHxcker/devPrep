@@ -2,7 +2,7 @@
 
 <div align="center">
     <a href="#">
-        <img src="./public/images/devPrep128.png" width="64" height="64" alt="PrepCards">
+        <img src="./public/images/PrepCard128.png" width="64" height="64" alt="PrepCards">
     </a>
     <h1>
         <a href="#">
