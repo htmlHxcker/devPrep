@@ -1,6 +1,5 @@
 import React from 'react';
 import useField from '../utils/useField';
-import './AddPrepCard.css';
 import '../styles/utilities.css';
 import { getStorage, setStorage } from '../utils/storage';
 
