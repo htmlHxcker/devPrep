@@ -4,7 +4,7 @@ import '../styles/utilities.css';
 
 const Modal = ({ children, modalState }) => {
 	return (
-		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
+		<div className={`modal flex ${!modalState.showModal ? 'hide-modal' : ''}`}>
 			{children}
 			<button
 				onClick={() => {
