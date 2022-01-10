@@ -2,27 +2,41 @@ import React from 'react';
 import useField from '../utils/useField';
 import './AddPrepCard.css';
 import '../styles/utilities.css';
-import { setStorage } from '../utils/storage';
+import { getStorage, setStorage } from '../utils/storage';
 
-const AddPrepCard = ({ cardState }) => {
+const AddPrepCard = ({ cardState, setShowModal }) => {
 	const cardFront = useField('text');
 	const cardBack = useField('text');
 
-	function addPrepCard() {
+	async function addPrepCard() {
 		if (!cardFront.value || !cardBack.value) {
 			alert('You have to fill the form to create a card!');
 			return;
 		}
-		let updatedCards = [
-			...cardState.cards,
-			{
-				CARD_FRONT: cardFront.value,
-				CARD_BACK: cardBack.value,
-			},
-		];
 
-		setStorage({ cards: updatedCards }, cardState.setCards(updatedCards));
-		modalState.setShowModal(false);
+		let cardsObject = await getStorage('cards');
+
+		let updatedCards = [];
+		if (cardState) {
+			updatedCards = [
+				...cardState.cards,
+				{
+					CARD_FRONT: cardFront.value,
+					CARD_BACK: cardBack.value,
+				},
+			];
+			cardState.setCards(updatedCards);
+		} else {
+			updatedCards = [
+				...cardsObject.cards,
+				{
+					CARD_FRONT: cardFront.value,
+					CARD_BACK: cardBack.value,
+				},
+			];
+		}
+		setStorage({ cards: updatedCards });
+		setShowModal ? setShowModal(false) : '';
 	}
 	return (
 		<div className="flex form--container">
