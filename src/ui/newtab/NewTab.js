@@ -49,17 +49,21 @@ const NewTab = () => {
 				{cards.length < 1 ? (
 					<h3 className="text-center">Loading Cards...</h3>
 				) : (
-					<Carousel cards={cards} />
+					<Carousel cardState={{ cards, setCards }} />
 				)}
 			</div>
 
 			<div className="text-right floating-buttons">
 				<button className="primary-btn newtab-buttons" onClick={openModal}>
-					<span>
+					<span title="Add PrepCard">
 						<FiPlus size={30} />
 					</span>
 				</button>
-				<a href="/options.html" className="primary-btn newtab-buttons">
+				<a
+					href="/options.html"
+					title="PrepCard Settings"
+					className="primary-btn newtab-buttons"
+				>
 					<FiSliders size={30} />
 				</a>
 			</div>

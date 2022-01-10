@@ -1,9 +1,10 @@
 import React from 'react';
 import useField from '../utils/useField';
 import '../styles/utilities.css';
-import { getStorage, setStorage } from '../utils/storage';
+import { setStorage } from '../utils/storage';
 
-const EditPrepCard = ({ setShowModal, card }) => {
+const EditPrepCard = ({ setShowModal, cardState, currentState }) => {
+	const card = cardState.cards[currentState.currentCard];
 	const cardFront = useField('text', card.CARD_FRONT);
 	const cardBack = useField('text', card.CARD_BACK);
 
@@ -12,29 +13,17 @@ const EditPrepCard = ({ setShowModal, card }) => {
 			alert('You left a field empty!');
 			return;
 		}
+		let cards = [...cardState.cards];
+		let editedCard = {
+			CARD_FRONT: cardFront.value,
+			CARD_BACK: cardBack.value,
+		};
+		let updatedCards = cards.map((card) =>
+			cards.indexOf(card) !== currentState.currentCard ? card : editedCard
+		);
 
-		// let cardsObject = await getStorage('cards');
-
-		// let updatedCards = [];
-		// if (cardState) {
-		// 	updatedCards = [
-		// 		...cardState.cards,
-		// 		{
-		// 			CARD_FRONT: cardFront.value,
-		// 			CARD_BACK: cardBack.value,
-		// 		},
-		// 	];
-		// 	cardState.setCards(updatedCards);
-		// } else {
-		// 	updatedCards = [
-		// 		...cardsObject.cards,
-		// 		{
-		// 			CARD_FRONT: cardFront.value,
-		// 			CARD_BACK: cardBack.value,
-		// 		},
-		// 	];
-		// }
-		// setStorage({ cards: updatedCards });
+		cardState.setCards(updatedCards);
+		setStorage({ cards: updatedCards });
 		setShowModal ? setShowModal(false) : '';
 	}
 	return (

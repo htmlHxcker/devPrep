@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Card from './Card';
 import './Carousel.css';
 
-const Carousel = ({ cards }) => {
+const Carousel = ({ cardState }) => {
 	const [flipped, setFlipped] = useState(false);
 	const [currentCard, setCurrentCard] = useState(0);
-
+	const cards = cardState.cards;
 	const length = cards.length;
 
 	const nextCard = () => {
@@ -27,7 +27,8 @@ const Carousel = ({ cards }) => {
 			<div className="card side-card" onClick={prevCard}></div>
 
 			<Card
-				card={cards[currentCard]}
+				cardState={cardState}
+				currentState={{ currentCard, setCurrentCard }}
 				isCardFlipped={flipped}
 				flipCard={flipCard}
 			/>
