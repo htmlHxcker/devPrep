@@ -2,3 +2,9 @@
 	height: 19rem;
 	width: 50%;
 }
+.modify-icons {
+	position: absolute;
+	top: 16rem;
+	right: 23rem;
+	cursor: pointer;
+}

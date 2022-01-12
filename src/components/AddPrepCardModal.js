@@ -1,24 +1,13 @@
 import React from 'react';
 import AddPrepCard from './AddPrepCard';
-import './AddPrepCardModal.css';
 import '../styles/utilities.css';
+import Modal from './Modal';
 
-const AddPrepCardModal = ({ modalState, cardState }) => {
+const AddPrepCardModal = ({ modalState }) => {
 	return (
-		<div className={`modal flex ${modalState.showModal ? '' : 'hide-modal'}`}>
-			<AddPrepCard
-				cardState={cardState}
-				setShowModal={modalState.setShowModal}
-			/>
-			<button
-				onClick={() => {
-					modalState.setShowModal(false);
-				}}
-				className="primary-btn close-modal-btn"
-			>
-				Cancel
-			</button>
-		</div>
+		<Modal modalState={modalState}>
+			<AddPrepCard setShowModal={modalState.setShowModal} />
+		</Modal>
 	);
 };
 

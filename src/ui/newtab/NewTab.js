@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import 'regenerator-runtime/runtime.js';
 import { FiSliders, FiPlus } from 'react-icons/fi';
+
+import { getStorage } from '../../utils/storage';
+import store from '../../store';
+import { initializeCards } from '../../reducers/cardReducer';
 import Carousel from '../../components/Carousel';
 import AddPrepCardModal from '../../components/AddPrepCardModal';
 import currentTime from '../../../public/scripts/currentTime';
+
 import '../../styles/index.css';
 import '../../styles/utilities.css';
 import './newtab.css';
-import { getStorage } from '../../utils/storage';
 
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
 	const [showModal, setShowModal] = useState(false);
-	const [cards, setCards] = useState([]);
+	const cards = useSelector((state) => state);
 	const [settings, setSettings] = useState([]);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		getStorage('cards', setCards);
+		dispatch(initializeCards());
 		getStorage('settings', setSettings);
-	}, []);
-
+	}, [dispatch]);
 	const options = {
 		weekday: 'long',
 		year: 'numeric',
@@ -28,6 +33,7 @@ const NewTab = () => {
 		day: 'numeric',
 	};
 	const DATE = new Date().toLocaleDateString(undefined, options);
+
 	setInterval(() => {
 		setTime(currentTime());
 	}, 1000);
@@ -49,27 +55,33 @@ const NewTab = () => {
 				{cards.length < 1 ? (
 					<h3 className="text-center">Loading Cards...</h3>
 				) : (
-					<Carousel cards={cards} />
+					<Carousel />
 				)}
 			</div>
 
 			<div className="text-right floating-buttons">
 				<button className="primary-btn newtab-buttons" onClick={openModal}>
-					<span>
+					<span title="Add PrepCard">
 						<FiPlus size={30} />
 					</span>
 				</button>
-				<a href="/options.html" className="primary-btn newtab-buttons">
+				<a
+					href="/options.html"
+					title="PrepCard Settings"
+					className="primary-btn newtab-buttons"
+				>
 					<FiSliders size={30} />
 				</a>
 			</div>
 
-			<AddPrepCardModal
-				modalState={{ showModal, setShowModal }}
-				cardState={{ cards, setCards }}
-			/>
+			<AddPrepCardModal modalState={{ showModal, setShowModal }} />
 		</div>
 	);
 };
 export default NewTab;
-render(<NewTab />, document.getElementById('newtab'));
+render(
+	<Provider store={store}>
+		<NewTab />
+	</Provider>,
+	document.getElementById('newtab')
+);

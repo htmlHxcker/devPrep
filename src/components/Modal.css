@@ -15,6 +15,7 @@
 	backdrop-filter: blur(10px);
 	transform: scale(1);
 	animation: show 0.2s ease-in;
+	z-index: 3;
 }
 @keyframes show {
 	from {

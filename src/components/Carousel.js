@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Card from './Card';
 import './Carousel.css';
 
-const Carousel = ({ cards }) => {
+const Carousel = () => {
 	const [flipped, setFlipped] = useState(false);
 	const [currentCard, setCurrentCard] = useState(0);
-
+	const cards = useSelector((state) => state);
 	const length = cards.length;
 
 	const nextCard = () => {
@@ -21,25 +22,14 @@ const Carousel = ({ cards }) => {
 	const flipCard = () => {
 		setFlipped(!flipped);
 	};
-	document.addEventListener('keydown', (event) => {
-		switch (event.code) {
-			case 'ArrowRight':
-				nextCard();
-				break;
-			case 'ArrowLeft':
-				prevCard();
-				break;
-			case 'Space':
-				flipCard();
-				break;
-		}
-	});
+
 	return (
 		<div className="carousel flex align-items-center justify-content-sb">
 			<div className="card side-card" onClick={prevCard}></div>
 
 			<Card
 				card={cards[currentCard]}
+				currentState={{ currentCard, setCurrentCard }}
 				isCardFlipped={flipped}
 				flipCard={flipCard}
 			/>
