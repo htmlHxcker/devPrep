@@ -1,9 +1,12 @@
 import React from 'react';
 import useField from '../utils/useField';
 import '../styles/utilities.css';
-import { getStorage, setStorage } from '../utils/storage';
+import store from '../store';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../reducers/cardReducer';
 
-const AddPrepCard = ({ cardState, setShowModal }) => {
+const AddPrepCard = ({ setShowModal }) => {
+	const dispatch = useDispatch();
 	const cardFront = useField('text');
 	const cardBack = useField('text');
 
@@ -12,29 +15,12 @@ const AddPrepCard = ({ cardState, setShowModal }) => {
 			alert('You have to fill the form to create a card!');
 			return;
 		}
+		const card = {
+			CARD_FRONT: cardFront.value,
+			CARD_BACK: cardBack.value,
+		};
+		dispatch(addCard(card));
 
-		let cardsObject = await getStorage('cards');
-
-		let updatedCards = [];
-		if (cardState) {
-			updatedCards = [
-				...cardState.cards,
-				{
-					CARD_FRONT: cardFront.value,
-					CARD_BACK: cardBack.value,
-				},
-			];
-			cardState.setCards(updatedCards);
-		} else {
-			updatedCards = [
-				...cardsObject.cards,
-				{
-					CARD_FRONT: cardFront.value,
-					CARD_BACK: cardBack.value,
-				},
-			];
-		}
-		setStorage({ cards: updatedCards });
 		setShowModal ? setShowModal(false) : '';
 	}
 	return (

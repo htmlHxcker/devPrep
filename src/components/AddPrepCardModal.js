@@ -3,13 +3,10 @@ import AddPrepCard from './AddPrepCard';
 import '../styles/utilities.css';
 import Modal from './Modal';
 
-const AddPrepCardModal = ({ modalState, cardState }) => {
+const AddPrepCardModal = ({ modalState }) => {
 	return (
 		<Modal modalState={modalState}>
-			<AddPrepCard
-				cardState={cardState}
-				setShowModal={modalState.setShowModal}
-			/>
+			<AddPrepCard setShowModal={modalState.setShowModal} />
 		</Modal>
 	);
 };
