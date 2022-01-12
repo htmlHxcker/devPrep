@@ -5,9 +5,8 @@ import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import Modal from './Modal';
 import EditPrepCard from './EditPrepCard';
 
-const Card = ({ cardState, currentState, isCardFlipped, flipCard }) => {
+const Card = ({ card, currentState, isCardFlipped, flipCard }) => {
 	const [showModal, setShowModal] = useState(false);
-	const card = cardState.cards[currentState.currentCard];
 
 	return (
 		<>
@@ -37,11 +36,7 @@ const Card = ({ cardState, currentState, isCardFlipped, flipCard }) => {
 				)}
 			</div>
 			<Modal modalState={{ showModal, setShowModal }}>
-				<EditPrepCard
-					setShowModal={setShowModal}
-					cardState={cardState}
-					currentState={currentState}
-				/>
+				<EditPrepCard setShowModal={setShowModal} currentState={currentState} />
 			</Modal>
 		</>
 	);
