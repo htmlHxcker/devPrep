@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import useField from '../utils/useField';
 import '../styles/utilities.css';
-import { setStorage } from '../utils/storage';
+import { editCard } from '../reducers/cardReducer';
 
-const EditPrepCard = ({ setShowModal, cardState, currentState }) => {
-	const card = cardState.cards[currentState.currentCard];
+const EditPrepCard = ({ setShowModal, currentState }) => {
+	const cards = useSelector((state) => state);
+	const card = cards[currentState.currentCard];
+	const dispatch = useDispatch();
+
 	const cardFront = useField('text', card.CARD_FRONT);
 	const cardBack = useField('text', card.CARD_BACK);
 
@@ -13,17 +17,14 @@ const EditPrepCard = ({ setShowModal, cardState, currentState }) => {
 			alert('You left a field empty!');
 			return;
 		}
-		let cards = [...cardState.cards];
-		let editedCard = {
-			CARD_FRONT: cardFront.value,
-			CARD_BACK: cardBack.value,
-		};
-		let updatedCards = cards.map((card) =>
-			cards.indexOf(card) !== currentState.currentCard ? card : editedCard
+		dispatch(
+			editCard({
+				CARD_FRONT: cardFront.value,
+				CARD_BACK: cardBack.value,
+				id: card.id,
+			})
 		);
 
-		cardState.setCards(updatedCards);
-		setStorage({ cards: updatedCards });
 		setShowModal ? setShowModal(false) : '';
 	}
 	return (
