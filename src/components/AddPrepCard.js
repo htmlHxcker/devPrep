@@ -1,9 +1,9 @@
 import React from 'react';
 import useField from '../utils/useField';
 import '../styles/utilities.css';
-import store from '../store';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../reducers/cardReducer';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddPrepCard = ({ setShowModal }) => {
 	const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const AddPrepCard = ({ setShowModal }) => {
 		const card = {
 			CARD_FRONT: cardFront.value,
 			CARD_BACK: cardBack.value,
+			id: uuidv4(),
 		};
 		dispatch(addCard(card));
 
