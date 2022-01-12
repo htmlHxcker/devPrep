@@ -24,7 +24,6 @@ const NewTab = () => {
 
 	useEffect(() => {
 		dispatch(initializeCards());
-		console.log(cards);
 		getStorage('settings', setSettings);
 	}, [dispatch]);
 	const options = {
@@ -34,13 +33,13 @@ const NewTab = () => {
 		day: 'numeric',
 	};
 	const DATE = new Date().toLocaleDateString(undefined, options);
+
 	setInterval(() => {
 		setTime(currentTime());
 	}, 1000);
 	function openModal() {
 		setShowModal(true);
 	}
-	console.log(cards);
 	return (
 		<div className="container container--newtab">
 			<div className="flex justify-content-sb">
@@ -75,10 +74,7 @@ const NewTab = () => {
 				</a>
 			</div>
 
-			<AddPrepCardModal
-				modalState={{ showModal, setShowModal }}
-				cardState={cards}
-			/>
+			<AddPrepCardModal modalState={{ showModal, setShowModal }} />
 		</div>
 	);
 };
