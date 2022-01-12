@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Card from './Card';
 import './Carousel.css';
 
-const Carousel = ({ cardState }) => {
+const Carousel = () => {
 	const [flipped, setFlipped] = useState(false);
 	const [currentCard, setCurrentCard] = useState(0);
-	const cards = cardState.cards;
+	const cards = useSelector((state) => state);
 	const length = cards.length;
 
 	const nextCard = () => {
@@ -27,7 +28,7 @@ const Carousel = ({ cardState }) => {
 			<div className="card side-card" onClick={prevCard}></div>
 
 			<Card
-				cardState={cardState}
+				card={cards[currentCard]}
 				currentState={{ currentCard, setCurrentCard }}
 				isCardFlipped={flipped}
 				flipCard={flipCard}
