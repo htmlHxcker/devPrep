@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import 'regenerator-runtime/runtime.js';
 import { FiSliders, FiPlus } from 'react-icons/fi';
+
+import { getStorage } from '../../utils/storage';
+import store from '../../store';
+import { initializeCards } from '../../reducers/cardReducer';
 import Carousel from '../../components/Carousel';
 import AddPrepCardModal from '../../components/AddPrepCardModal';
 import currentTime from '../../../public/scripts/currentTime';
+
 import '../../styles/index.css';
 import '../../styles/utilities.css';
 import './newtab.css';
-import { getStorage } from '../../utils/storage';
 
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
 	const [showModal, setShowModal] = useState(false);
-	const [cards, setCards] = useState([]);
+	const cards = useSelector((state) => state);
 	const [settings, setSettings] = useState([]);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		getStorage('cards', setCards);
+		dispatch(initializeCards());
+		console.log(cards);
 		getStorage('settings', setSettings);
-	}, []);
-
+	}, [dispatch]);
 	const options = {
 		weekday: 'long',
 		year: 'numeric',
@@ -34,6 +40,7 @@ const NewTab = () => {
 	function openModal() {
 		setShowModal(true);
 	}
+	console.log(cards);
 	return (
 		<div className="container container--newtab">
 			<div className="flex justify-content-sb">
@@ -49,7 +56,7 @@ const NewTab = () => {
 				{cards.length < 1 ? (
 					<h3 className="text-center">Loading Cards...</h3>
 				) : (
-					<Carousel cardState={{ cards, setCards }} />
+					<Carousel />
 				)}
 			</div>
 
@@ -70,10 +77,15 @@ const NewTab = () => {
 
 			<AddPrepCardModal
 				modalState={{ showModal, setShowModal }}
-				cardState={{ cards, setCards }}
+				cardState={cards}
 			/>
 		</div>
 	);
 };
 export default NewTab;
-render(<NewTab />, document.getElementById('newtab'));
+render(
+	<Provider store={store}>
+		<NewTab />
+	</Provider>,
+	document.getElementById('newtab')
+);
