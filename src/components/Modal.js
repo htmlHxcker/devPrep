@@ -1,14 +1,22 @@
 import React from 'react';
 import './Modal.css';
 import '../styles/utilities.css';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Modal = ({ children, modalState }) => {
+const Modal = ({ children, modalName }) => {
+	const modal = useSelector((state) => state.modal);
+	const modalState = modal[modalName];
+	const dispatch = useDispatch();
+
 	return (
-		<div className={`modal flex ${!modalState.showModal ? 'hide-modal' : ''}`}>
+		<div className={`modal flex ${!modalState ? 'hide-modal' : ''}`}>
 			{children}
 			<button
 				onClick={() => {
-					modalState.setShowModal(false);
+					dispatch({
+						type: `${modalName}_CARD_MODAL`,
+						payload: false,
+					});
 				}}
 				className="primary-btn close-modal-btn"
 			>
