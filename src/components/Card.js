@@ -5,6 +5,7 @@ import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import Modal from './Modal';
 import EditPrepCard from './EditPrepCard';
 import { useSelector, useDispatch } from 'react-redux';
+import DeletePrepCard from './DeletePrepCard';
 
 const Card = ({ isCardFlipped, flipCard }) => {
 	const current = useSelector((state) => state.current);
@@ -28,7 +29,11 @@ const Card = ({ isCardFlipped, flipCard }) => {
 							>
 								<FiEdit2 size={25} />
 							</span>
-							<span>
+							<span
+								onClick={() => {
+									dispatch({ type: 'DELETE_CARD_MODAL', payload: true });
+								}}
+							>
 								<FiTrash2 size={25} color="red" />
 							</span>
 						</div>
@@ -41,6 +46,9 @@ const Card = ({ isCardFlipped, flipCard }) => {
 			</div>
 			<Modal modalName="EDIT">
 				<EditPrepCard />
+			</Modal>
+			<Modal modalName="DELETE">
+				<DeletePrepCard />
 			</Modal>
 		</>
 	);
