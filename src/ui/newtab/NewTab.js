@@ -18,7 +18,7 @@ import './newtab.css';
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
 	const [showModal, setShowModal] = useState(false);
-	const cards = useSelector((state) => state);
+	const cards = useSelector((state) => state.cards);
 	const [settings, setSettings] = useState([]);
 	const dispatch = useDispatch();
 
