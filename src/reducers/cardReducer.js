@@ -1,16 +1,15 @@
 import { editStorage, getStorage, setStorage } from '../utils/storage';
 
-const cardReducer = (state = [], action) => {
-	let updatedCards;
-	switch (action.type) {
+const cardReducer = (state = [], { type, payload }) => {
+	switch (type) {
 		case 'INIT_CARDS':
-			return action.data;
+			return payload;
 		case 'ADD_CARD':
-			return [...state, action.data];
+			return [...state, payload];
 		case 'EDIT_CARD':
-			return action.data;
+			return payload;
 		case 'DELETE_CARD':
-			updatedCards = state.filter((card) => card.id !== action.data.id);
+			updatedCards = state.filter((card) => card.id !== payload.id);
 			setStorage({ cards: updatedCards });
 			return updatedCards;
 		default:
@@ -23,7 +22,7 @@ export const initializeCards = () => {
 		const cardsObj = await getStorage('cards');
 		dispatch({
 			type: 'INIT_CARDS',
-			data: cardsObj.cards,
+			payload: cardsObj.cards,
 		});
 	};
 };
@@ -34,7 +33,7 @@ export const addCard = (card) => {
 		setStorage({ cards: [...cardsObj.cards, card] });
 		dispatch({
 			type: 'ADD_CARD',
-			data: card,
+			payload: card,
 		});
 	};
 };
@@ -44,7 +43,7 @@ export const editCard = (card) => {
 		let updatedCards = await editStorage(card.id, card);
 		dispatch({
 			type: 'EDIT_CARD',
-			data: updatedCards,
+			payload: updatedCards,
 		});
 	};
 };
