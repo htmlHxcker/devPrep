@@ -8,7 +8,8 @@ import { getStorage } from '../../utils/storage';
 import store from '../../store';
 import { initializeCards } from '../../reducers/cardReducer';
 import Carousel from '../../components/Carousel';
-import AddPrepCardModal from '../../components/AddPrepCardModal';
+import AddPrepCard from '../../components/AddPrepCard';
+import Modal from '../../components/Modal';
 import currentTime from '../../../public/scripts/currentTime';
 
 import '../../styles/index.css';
@@ -17,7 +18,6 @@ import './newtab.css';
 
 const NewTab = () => {
 	const [time, setTime] = useState(currentTime());
-	const [showModal, setShowModal] = useState(false);
 	const cards = useSelector((state) => state.cards);
 	const [settings, setSettings] = useState([]);
 	const dispatch = useDispatch();
@@ -26,20 +26,22 @@ const NewTab = () => {
 		dispatch(initializeCards());
 		getStorage('settings', setSettings);
 	}, [dispatch]);
+
 	const options = {
 		weekday: 'long',
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
 	};
+
 	const DATE = new Date().toLocaleDateString(undefined, options);
+	const openModal = () => {
+		dispatch({ type: 'ADD_CARD_MODAL', payload: true });
+	};
 
 	setInterval(() => {
 		setTime(currentTime());
 	}, 1000);
-	function openModal() {
-		setShowModal(true);
-	}
 	return (
 		<div className="container container--newtab">
 			<div className="flex justify-content-sb">
@@ -74,7 +76,9 @@ const NewTab = () => {
 				</a>
 			</div>
 
-			<AddPrepCardModal modalState={{ showModal, setShowModal }} />
+			<Modal modalName="ADD">
+				<AddPrepCard />
+			</Modal>
 		</div>
 	);
 };
