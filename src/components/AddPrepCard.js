@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addCard } from '../reducers/cardReducer';
 import { v4 as uuidv4 } from 'uuid';
 
-const AddPrepCard = ({ setShowModal }) => {
+const AddPrepCard = () => {
 	const dispatch = useDispatch();
 	const cardFront = useField('text');
 	const cardBack = useField('text');
@@ -22,7 +22,7 @@ const AddPrepCard = ({ setShowModal }) => {
 		};
 		dispatch(addCard(card));
 
-		setShowModal ? setShowModal(false) : '';
+		dispatch({ type: ADD_CARD_MODAL, payload: false });
 	}
 	return (
 		<div className="flex form--container">
