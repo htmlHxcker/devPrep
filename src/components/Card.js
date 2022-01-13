@@ -4,14 +4,14 @@ import '../styles/utilities.css';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import Modal from './Modal';
 import EditPrepCard from './EditPrepCard';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Card = ({ isCardFlipped, flipCard }) => {
-	const [showModal, setShowModal] = useState(false);
 	const current = useSelector((state) => state.current);
 	const cards = useSelector((state) => state.cards);
 	const card = cards[current];
 
+	const dispatch = useDispatch();
 	return (
 		<>
 			<div
@@ -23,7 +23,7 @@ const Card = ({ isCardFlipped, flipCard }) => {
 						<div className="text-right flex modify-icons">
 							<span
 								onClick={() => {
-									setShowModal(true);
+									dispatch({ type: 'EDIT_CARD_MODAL', payload: true });
 								}}
 							>
 								<FiEdit2 size={25} />
@@ -39,8 +39,8 @@ const Card = ({ isCardFlipped, flipCard }) => {
 					<h2>{card.CARD_FRONT}</h2>
 				)}
 			</div>
-			<Modal modalState={{ showModal, setShowModal }}>
-				<EditPrepCard setShowModal={setShowModal} />
+			<Modal modalName="EDIT">
+				<EditPrepCard />
 			</Modal>
 		</>
 	);

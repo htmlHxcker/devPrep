@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/utilities.css';
 import { editCard } from '../reducers/cardReducer';
-import { getCurrent } from '../reducers/currentReducer';
 
-const EditPrepCard = ({ setShowModal }) => {
+const EditPrepCard = () => {
 	const cards = useSelector((state) => state.cards);
 	const current = useSelector((state) => state.current);
+
 	const card = cards[current];
 	const dispatch = useDispatch();
 
@@ -30,9 +30,7 @@ const EditPrepCard = ({ setShowModal }) => {
 				id: card.id,
 			})
 		);
-		dispatch(getCurrent());
-
-		setShowModal ? setShowModal(false) : '';
+		dispatch({ type: 'EDIT_CARD_MODAL', payload: false });
 	}
 	return (
 		<div className="flex form--container">
