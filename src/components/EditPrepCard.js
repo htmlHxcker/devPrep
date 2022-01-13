@@ -4,9 +4,10 @@ import useField from '../utils/useField';
 import '../styles/utilities.css';
 import { editCard } from '../reducers/cardReducer';
 
-const EditPrepCard = ({ setShowModal, currentState }) => {
-	const cards = useSelector((state) => state);
-	const card = cards[currentState.currentCard];
+const EditPrepCard = ({ setShowModal }) => {
+	const cards = useSelector((state) => state.cards);
+	const current = useSelector((state) => state.current);
+	const card = cards[current];
 	const dispatch = useDispatch();
 
 	const cardFront = useField('text', card.CARD_FRONT);
