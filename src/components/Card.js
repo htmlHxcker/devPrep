@@ -4,9 +4,13 @@ import '../styles/utilities.css';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import Modal from './Modal';
 import EditPrepCard from './EditPrepCard';
+import { useSelector } from 'react-redux';
 
-const Card = ({ card, currentState, isCardFlipped, flipCard }) => {
+const Card = ({ isCardFlipped, flipCard }) => {
 	const [showModal, setShowModal] = useState(false);
+	const current = useSelector((state) => state.current);
+	const cards = useSelector((state) => state.cards);
+	const card = cards[current];
 
 	return (
 		<>
@@ -36,7 +40,7 @@ const Card = ({ card, currentState, isCardFlipped, flipCard }) => {
 				)}
 			</div>
 			<Modal modalState={{ showModal, setShowModal }}>
-				<EditPrepCard setShowModal={setShowModal} currentState={currentState} />
+				<EditPrepCard setShowModal={setShowModal} />
 			</Modal>
 		</>
 	);
