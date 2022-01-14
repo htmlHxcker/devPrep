@@ -4,10 +4,15 @@ import '../styles/utilities.css';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import Modal from './Modal';
 import EditPrepCard from './EditPrepCard';
+import { useSelector, useDispatch } from 'react-redux';
+import DeletePrepCard from './DeletePrepCard';
 
-const Card = ({ card, currentState, isCardFlipped, flipCard }) => {
-	const [showModal, setShowModal] = useState(false);
+const Card = ({ isCardFlipped, flipCard }) => {
+	const current = useSelector((state) => state.current);
+	const cards = useSelector((state) => state.cards);
+	const card = cards[current];
 
+	const dispatch = useDispatch();
 	return (
 		<>
 			<div
@@ -19,12 +24,16 @@ const Card = ({ card, currentState, isCardFlipped, flipCard }) => {
 						<div className="text-right flex modify-icons">
 							<span
 								onClick={() => {
-									setShowModal(true);
+									dispatch({ type: 'EDIT_CARD_MODAL', payload: true });
 								}}
 							>
 								<FiEdit2 size={25} />
 							</span>
-							<span>
+							<span
+								onClick={() => {
+									dispatch({ type: 'DELETE_CARD_MODAL', payload: true });
+								}}
+							>
 								<FiTrash2 size={25} color="red" />
 							</span>
 						</div>
@@ -35,9 +44,14 @@ const Card = ({ card, currentState, isCardFlipped, flipCard }) => {
 					<h2>{card.CARD_FRONT}</h2>
 				)}
 			</div>
-			<Modal modalState={{ showModal, setShowModal }}>
-				<EditPrepCard setShowModal={setShowModal} currentState={currentState} />
+			<Modal modalName="EDIT">
+				<EditPrepCard />
 			</Modal>
+			<div className="delete--container">
+				<Modal modalName="DELETE">
+					<DeletePrepCard />
+				</Modal>
+			</div>
 		</>
 	);
 };

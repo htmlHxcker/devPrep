@@ -17,21 +17,18 @@ export const getStorage = async (itemName, callback) => {
 		});
 	}
 };
-const updateAnecdote = async (id) => {
-	const anecdotes = await getAll();
-	const anecdoteToChange = anecdotes.find((n) => n.id === id);
-	const changedAnecdote = {
-		...anecdoteToChange,
-		votes: anecdoteToChange.votes + 1,
-	};
-	const req = await axios.put(`${baseUrl}/${id}`, changedAnecdote);
-	return req.data;
-};
 export const editStorage = async (id, editedItem, storageItem = 'cards') => {
 	const itemsObj = await getStorage(storageItem);
-	let updatedStorage = itemsObj[storageItem].map((card) =>
-		card.id !== id ? card : editedItem
+	let updatedStorage = itemsObj[storageItem].map((item) =>
+		item.id !== id ? item : editedItem
 	);
+	setStorage({ [storageItem]: updatedStorage });
+	return updatedStorage;
+};
+
+export const deleteStorageItem = async (id, storageItem = 'cards') => {
+	const itemsObj = await getStorage(storageItem);
+	let updatedStorage = itemsObj[storageItem].filter((item) => item.id !== id);
 	setStorage({ [storageItem]: updatedStorage });
 	return updatedStorage;
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import 'regenerator-runtime/runtime.js';
+import { Provider } from 'react-redux';
+import store from '../../store';
 import AddPrepCard from '../../components/AddPrepCard';
 import '../../styles/index.css';
 import '../../styles/utilities.css';
@@ -15,4 +17,9 @@ const Popup = () => {
 };
 
 export default Popup;
-render(<Popup />, document.getElementById('popup'));
+render(
+	<Provider store={store}>
+		<Popup />
+	</Provider>,
+	document.getElementById('popup')
+);

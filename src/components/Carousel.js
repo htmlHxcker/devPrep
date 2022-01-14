@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { decrementCurrent, incrementCurrent } from '../reducers/currentReducer';
 import Card from './Card';
 import './Carousel.css';
 
 const Carousel = () => {
 	const [flipped, setFlipped] = useState(false);
-	const [currentCard, setCurrentCard] = useState(0);
-	const cards = useSelector((state) => state);
+	const current = useSelector((state) => state.current);
+	const cards = useSelector((state) => state.cards);
 	const length = cards.length;
+	const dispatch = useDispatch();
 
-	const nextCard = () => {
-		setCurrentCard(currentCard === length - 1 ? 0 : currentCard + 1);
+	const prevCard = () => {
+		dispatch(decrementCurrent(current, length));
 		setFlipped(false);
 	};
 
-	const prevCard = () => {
-		setCurrentCard(currentCard === 0 ? length - 1 : currentCard - 1);
+	const nextCard = () => {
+		dispatch(incrementCurrent(current, length));
 		setFlipped(false);
 	};
 
@@ -27,12 +29,7 @@ const Carousel = () => {
 		<div className="carousel flex align-items-center justify-content-sb">
 			<div className="card side-card" onClick={prevCard}></div>
 
-			<Card
-				card={cards[currentCard]}
-				currentState={{ currentCard, setCurrentCard }}
-				isCardFlipped={flipped}
-				flipCard={flipCard}
-			/>
+			<Card isCardFlipped={flipped} flipCard={flipCard} />
 
 			<div className="card side-card" onClick={nextCard}></div>
 		</div>

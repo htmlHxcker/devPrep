@@ -1,43 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import useField from '../utils/useField';
 import '../styles/utilities.css';
 import { editCard } from '../reducers/cardReducer';
 
-const EditPrepCard = ({ setShowModal, currentState }) => {
-	const cards = useSelector((state) => state);
-	const card = cards[currentState.currentCard];
+const EditPrepCard = () => {
+	const cards = useSelector((state) => state.cards);
+	const current = useSelector((state) => state.current);
+
+	const card = cards[current];
 	const dispatch = useDispatch();
 
-	const cardFront = useField('text', card.CARD_FRONT);
-	const cardBack = useField('text', card.CARD_BACK);
+	const [cardFront, setCardFront] = useState(card.CARD_FRONT);
+	const [cardBack, setCardBack] = useState(card.CARD_BACK);
+
+	useEffect(() => {
+		setCardFront(card.CARD_FRONT);
+		setCardBack(card.CARD_BACK);
+	}, [card]);
 
 	async function editPrepCard() {
-		if (!cardFront.value || !cardBack.value) {
+		if (!cardFront || !cardBack) {
 			alert('You left a field empty!');
 			return;
 		}
 		dispatch(
 			editCard({
-				CARD_FRONT: cardFront.value,
-				CARD_BACK: cardBack.value,
+				CARD_FRONT: cardFront,
+				CARD_BACK: cardBack,
 				id: card.id,
 			})
 		);
-
-		setShowModal ? setShowModal(false) : '';
+		dispatch({ type: 'EDIT_CARD_MODAL', payload: false });
 	}
 	return (
-		<div className="flex form--container">
+		<div className="flex modal--container">
 			<h3 className="ff-cardo fs-700">Editing '{card.CARD_FRONT}'</h3>
 			<label htmlFor="cardFront" className="fs-500 ff-cardo">
 				Front of the Card
 			</label>
-			<input {...cardFront} name="cardFront" className="text-input" />
+			<input
+				type="text"
+				value={cardFront}
+				onChange={(event) => {
+					setCardFront(event.target.value);
+				}}
+				name="cardFront"
+				className="text-input"
+			/>
 			<label htmlFor="cardBack" className="fs-500 ff-cardo">
 				Back of the Card
 			</label>
-			<input {...cardBack} name="cardBack" className="text-input" />
+			<input
+				type="text"
+				value={cardBack}
+				name="cardBack"
+				onChange={(event) => {
+					setCardBack(event.target.value);
+				}}
+				className="text-input"
+			/>
 			<button onClick={editPrepCard} className="primary-btn">
 				Edit PrepCard
 			</button>

@@ -41,6 +41,13 @@
 	margin-inline: auto;
 	max-width: 100vw;
 }
+.modal--container {
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+}
 .card {
 	background-color: whitesmoke;
 	border-radius: 0.5rem;
@@ -135,15 +142,6 @@
 }
 
 /* Forms and Inputs */
-.form--container {
-	height: 100%;
-	width: 100%;
-
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: center;
-}
-
 .text-input {
 	width: var(--input-width, 100%);
 	height: var(--input-height, 20%);
