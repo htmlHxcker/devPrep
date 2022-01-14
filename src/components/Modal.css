@@ -6,8 +6,7 @@
 	right: 0;
 	height: 100vh;
 	width: 100vw;
-	padding: 3rem;
-	padding-left: 60vw;
+	padding: var(--modal-padding, 3rem 3rem 3rem 60vw);
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
