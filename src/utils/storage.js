@@ -19,9 +19,16 @@ export const getStorage = async (itemName, callback) => {
 };
 export const editStorage = async (id, editedItem, storageItem = 'cards') => {
 	const itemsObj = await getStorage(storageItem);
-	let updatedStorage = itemsObj[storageItem].map((card) =>
-		card.id !== id ? card : editedItem
+	let updatedStorage = itemsObj[storageItem].map((item) =>
+		item.id !== id ? item : editedItem
 	);
+	setStorage({ [storageItem]: updatedStorage });
+	return updatedStorage;
+};
+
+export const deleteStorageItem = async (id, storageItem = 'cards') => {
+	const itemsObj = await getStorage(storageItem);
+	let updatedStorage = itemsObj[storageItem].filter((item) => item.id !== id);
 	setStorage({ [storageItem]: updatedStorage });
 	return updatedStorage;
 };
