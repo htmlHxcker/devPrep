@@ -33,7 +33,7 @@ const EditPrepCard = () => {
 		dispatch({ type: 'EDIT_CARD_MODAL', payload: false });
 	}
 	return (
-		<div className="flex form--container">
+		<div className="flex modal--container">
 			<h3 className="ff-cardo fs-700">Editing '{card.CARD_FRONT}'</h3>
 			<label htmlFor="cardFront" className="fs-500 ff-cardo">
 				Front of the Card
