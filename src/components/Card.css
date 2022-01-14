@@ -8,3 +8,6 @@
 	right: 23rem;
 	cursor: pointer;
 }
+.delete--container {
+	--modal-padding: 8rem 8rem 8rem 8rem;
+}

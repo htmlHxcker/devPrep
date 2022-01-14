@@ -47,9 +47,11 @@ const Card = ({ isCardFlipped, flipCard }) => {
 			<Modal modalName="EDIT">
 				<EditPrepCard />
 			</Modal>
-			<Modal modalName="DELETE">
-				<DeletePrepCard />
-			</Modal>
+			<div className="delete--container">
+				<Modal modalName="DELETE">
+					<DeletePrepCard />
+				</Modal>
+			</div>
 		</>
 	);
 };
