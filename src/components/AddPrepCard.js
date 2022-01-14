@@ -22,10 +22,10 @@ const AddPrepCard = () => {
 		};
 		dispatch(addCard(card));
 
-		dispatch({ type: ADD_CARD_MODAL, payload: false });
+		dispatch({ type: 'ADD_CARD_MODAL', payload: false });
 	}
 	return (
-		<div className="flex form--container">
+		<div className="flex modal--container">
 			<label htmlFor="cardFront" className="fs-500 ff-cardo">
 				Front of the Card
 			</label>
