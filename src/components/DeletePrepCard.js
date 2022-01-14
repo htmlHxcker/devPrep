@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AiOutlineWarning } from 'react-icons/ai';
 import '../styles/utilities.css';
+import { deleteCard } from '../reducers/cardReducer';
 
 const DeletePrepCard = () => {
 	const cards = useSelector((state) => state.cards);
@@ -11,6 +12,7 @@ const DeletePrepCard = () => {
 	const dispatch = useDispatch();
 
 	async function deletePrepCard() {
+		dispatch(deleteCard(card.id));
 		dispatch({ type: 'DELETE_CARD_MODAL', payload: false });
 	}
 	return (
