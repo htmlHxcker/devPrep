@@ -8,9 +8,9 @@ import {
 const cardReducer = (state = [], { type, payload }) => {
 	switch (type) {
 		case 'INIT_CARDS':
-			return payload;
+			return payload || state;
 		case 'ADD_CARD':
-			return [...state, payload];
+			return state.length < 1 ? [payload] : [...state, payload];
 		case 'EDIT_CARD':
 			return payload;
 		case 'DELETE_CARD':
@@ -25,7 +25,7 @@ export const initializeCards = () => {
 		const cardsObj = await getStorage('cards');
 		dispatch({
 			type: 'INIT_CARDS',
-			payload: cardsObj.cards,
+			payload: !cardsObj.cards ? [] : cardsObj.cards,
 		});
 	};
 };
@@ -33,7 +33,9 @@ export const initializeCards = () => {
 export const addCard = (card) => {
 	return async (dispatch) => {
 		const cardsObj = await getStorage('cards');
-		const cardsAfterAddition = [...cardsObj.cards, card];
+		const cardsAfterAddition = !cardsObj.cards
+			? [card]
+			: [...cardsObj.cards, card];
 		await setStorage({ cards: cardsAfterAddition });
 		dispatch({
 			type: 'ADD_CARD',
