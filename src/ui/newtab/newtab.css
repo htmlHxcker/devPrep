@@ -6,6 +6,13 @@
 .container--card {
 	margin: 0 -2rem;
 }
+.preloader {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 23rem;
+}
 .floating-buttons {
 	position: relative;
 	top: 5rem;

@@ -55,7 +55,10 @@ const NewTab = () => {
 			</div>
 			<div className="flex container--card">
 				{cards.length < 1 ? (
-					<h3 className="text-center">Loading Cards...</h3>
+					<div className="flex preloader">
+						<img src="./images/loading.gif" alt="Loading PrepCards"></img>
+						<h3 className="fs-600">There are no PrepCards yet.</h3>
+					</div>
 				) : (
 					<Carousel />
 				)}
