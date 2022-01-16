@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AiOutlineWarning } from 'react-icons/ai';
 import '../styles/utilities.css';
 import { deleteCard } from '../reducers/cardReducer';
+import { decrementCurrent } from '../reducers/currentReducer';
 
 const DeletePrepCard = () => {
 	const cards = useSelector((state) => state.cards);
@@ -14,6 +15,7 @@ const DeletePrepCard = () => {
 	async function deletePrepCard() {
 		dispatch(deleteCard(card.id));
 		dispatch({ type: 'DELETE_CARD_MODAL', payload: false });
+		dispatch(decrementCurrent(current, cards.length));
 	}
 	return (
 		<div className="flex modal--container ">
