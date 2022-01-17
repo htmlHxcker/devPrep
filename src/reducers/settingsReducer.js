@@ -1,10 +1,11 @@
 import { getStorage, setStorage } from '../utils/storage';
 
+
 const settingsReducer = (state = {}, { type, payload }) => {
 	switch (type) {
 		case 'GET_SETTINGS':
 			return payload || state;
-		case 'SET_SETTINGS':
+    case 'SET_SETTINGS':
 			return payload;
 		default:
 			return state;
@@ -17,8 +18,6 @@ export const getSettings = () => {
 		dispatch({
 			type: 'GET_SETTINGS',
 			payload: settingsObj.settings === undefined ? {} : settingsObj.settings,
-		});
-	};
 };
 
 export const setSettings = (values) => {
@@ -32,3 +31,4 @@ export const setSettings = (values) => {
 };
 
 export default settingsReducer;
+

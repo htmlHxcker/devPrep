@@ -20,7 +20,7 @@
 	"chrome_url_overrides": {
 		"newtab": "newtab.html"
 	},
-	"permissions": ["tabs", "storage", "contextMenus"],
+	"permissions": ["tabs", "storage", "contextMenus", "activeTab"],
 	"icons": {
 		"16": "./images/PrepCard16.png",
 		"32": "./images/PrepCard32.png",
