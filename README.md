@@ -25,7 +25,7 @@
 
 ## What is PrepCard?
 
-<img src="./public/images/prepcard-newtab.png" alt="PrepCards New Tab Page">
+<img src="./public/images/README/prepcard-newtab.png" alt="PrepCards New Tab Page">
 
 PrepCard is a project I conceived while learning Japanese along with some other
 people and preparing for technical interviews. I didn't know of
