@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { render } from 'react-dom';
 import { Formik, Field, Form } from 'formik';
 import 'regenerator-runtime/runtime.js';
 import '../../styles/utilities.css';
 import '../../styles/index.css';
 import './options.css';
-import { setStorage } from '../../utils/storage';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import { getSettings, setSettings } from '../../reducers/settingsReducer';
+import store from '../../store';
 
 const Options = () => {
+	const settings = useSelector((state) => state.settings);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getSettings());
+		console.log('settings in options', settings);
+	}, [dispatch]);
 	return (
 		<div>
 			<Formik
-				initialValues={{
-					import: [],
-					contextMenu: 'YES',
-					username: '',
-				}}
-				onSubmit={(values) => {
-					setStorage({ settings: values });
-					console.log(values);
+				initialValues={settings}
+				onSubmit={async (values) => {
+					dispatch(setSettings(values));
 				}}
 			>
 				<Form className="container container--options">
@@ -100,4 +103,9 @@ const Options = () => {
 };
 
 export default Options;
-render(<Options />, document.getElementById('options'));
+render(
+	<Provider store={store}>
+		<Options />
+	</Provider>,
+	document.getElementById('options')
+);
