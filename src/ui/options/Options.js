@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { render } from 'react-dom';
 import { Formik, Field, Form } from 'formik';
 import 'regenerator-runtime/runtime.js';
 import '../../styles/utilities.css';
 import '../../styles/index.css';
 import './options.css';
-import { setStorage } from '../../utils/storage';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import { getSettings, setSettings } from '../../reducers/settingsReducer';
+import store from '../../store';
 
 const Options = () => {
+	const settings = useSelector((state) => state.settings);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getSettings());
+		console.log('settings in options', settings);
+	}, [dispatch]);
 	return (
 		<div>
 			<Formik
-				initialValues={{
-					import: [],
-					contextMenu: 'YES',
-					username: '',
-				}}
-				onSubmit={(values) => {
-					setStorage({ settings: values });
-					console.log(values);
+				initialValues={settings}
+				onSubmit={async (values) => {
+					dispatch(setSettings(values));
 				}}
 			>
 				<Form className="container container--options">
@@ -41,43 +44,18 @@ const Options = () => {
 								className="text-input username"
 							/>
 						</label>
-
-						<div id="radio-group">Show PrepCards in Context Menu</div>
+					</div>
+					<div className="import-options bg-carousel-pink panel">
+						<h2>Sync Options</h2>
+						<div id="radio-group">Sync PrepCards across Browsers?</div>
 						<div role="group" aria-labelledby="radio-group">
 							<label>
-								<Field type="radio" name="contextMenu" value="YES" />
+								<Field type="radio" name="sync" value="YES" />
 								Yes
 							</label>
 							<label>
-								<Field type="radio" name="contextMenu" value="NO" />
+								<Field type="radio" name="sync" value="NO" />
 								No
-							</label>
-						</div>
-					</div>
-					<div className="import-options bg-carousel-pink panel">
-						<h2>Import Options</h2>
-						<div id="checkbox-group">
-							Check the boxes of the languages you want to import prepCards for.
-						</div>
-						<div role="group" aria-labelledby="checkbox-group">
-							<label>
-								<Field type="checkbox" name="import" value="HTML" />
-								HTML
-							</label>
-
-							<label>
-								<Field type="checkbox" name="import" value="CSS" />
-								CSS
-							</label>
-
-							<label>
-								<Field type="checkbox" name="import" value="JavaScript" />
-								JavaScript
-							</label>
-
-							<label>
-								<Field type="checkbox" name="import" value="Python" />
-								Python
 							</label>
 						</div>
 					</div>
@@ -100,4 +78,9 @@ const Options = () => {
 };
 
 export default Options;
-render(<Options />, document.getElementById('options'));
+render(
+	<Provider store={store}>
+		<Options />
+	</Provider>,
+	document.getElementById('options')
+);

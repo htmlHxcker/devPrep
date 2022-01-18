@@ -36,7 +36,7 @@ export const addCard = (card) => {
 		const cardsAfterAddition = !cardsObj.cards
 			? [card]
 			: [...cardsObj.cards, card];
-		await setStorage({ cards: cardsAfterAddition });
+		setStorage({ cards: cardsAfterAddition });
 		dispatch({
 			type: 'ADD_CARD',
 			payload: card,

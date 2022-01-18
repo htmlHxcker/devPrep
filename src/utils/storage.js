@@ -1,20 +1,20 @@
-export const setStorage = (item, callback) => {
-	if (callback === undefined) {
+const settingsObj = getStorage('settings');
+const syncSettings = settingsObj.settings.sync;
+
+export const setStorage = (item) => {
+	if (syncSettings === 'YES') {
 		chrome.storage.sync.set(item);
 	} else {
-		chrome.storage.sync.set(item, () => {
-			callback(item);
-		});
+		chrome.storage.local.set(item);
 	}
 };
-export const getStorage = async (itemName, callback) => {
-	if (callback === undefined) {
+export const getStorage = async (itemName) => {
+	if (syncSettings === 'YES') {
 		let item = await chrome.storage.sync.get(itemName);
 		return item;
 	} else {
-		await chrome.storage.sync.get(itemName, (result) => {
-			callback(result[itemName]);
-		});
+		let item = await chrome.storage.local.get(itemName);
+		return item;
 	}
 };
 export const editStorage = async (id, editedItem, storageItem = 'cards') => {
