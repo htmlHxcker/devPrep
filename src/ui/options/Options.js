@@ -44,43 +44,18 @@ const Options = () => {
 								className="text-input username"
 							/>
 						</label>
-
-						<div id="radio-group">Show PrepCards in Context Menu</div>
+					</div>
+					<div className="import-options bg-carousel-pink panel">
+						<h2>Sync Options</h2>
+						<div id="radio-group">Sync PrepCards across Browsers?</div>
 						<div role="group" aria-labelledby="radio-group">
 							<label>
-								<Field type="radio" name="contextMenu" value="YES" />
+								<Field type="radio" name="sync" value="YES" />
 								Yes
 							</label>
 							<label>
-								<Field type="radio" name="contextMenu" value="NO" />
+								<Field type="radio" name="sync" value="NO" />
 								No
-							</label>
-						</div>
-					</div>
-					<div className="import-options bg-carousel-pink panel">
-						<h2>Import Options</h2>
-						<div id="checkbox-group">
-							Check the boxes of the languages you want to import prepCards for.
-						</div>
-						<div role="group" aria-labelledby="checkbox-group">
-							<label>
-								<Field type="checkbox" name="import" value="HTML" />
-								HTML
-							</label>
-
-							<label>
-								<Field type="checkbox" name="import" value="CSS" />
-								CSS
-							</label>
-
-							<label>
-								<Field type="checkbox" name="import" value="JavaScript" />
-								JavaScript
-							</label>
-
-							<label>
-								<Field type="checkbox" name="import" value="Python" />
-								Python
 							</label>
 						</div>
 					</div>
