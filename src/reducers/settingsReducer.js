@@ -1,7 +1,7 @@
 import { getStorage, setStorage } from '../utils/storage';
 
 const settingsReducer = (
-  state = {},
+  state = { username: '', sync: 'NO' },
   { type, payload },
 ) => {
   switch (type) {

@@ -9,10 +9,9 @@ module.exports = {
     historyApiFallback: true,
   },
   entry: {
-    popup: path.resolve(__dirname, './src/ui/popup/Popup.js'),
+    popup: path.resolve(__dirname, './src/ui/popup/Popup.jsx'),
     options: path.resolve(__dirname, './src/ui/options/Options.jsx'),
-    foreground: path.resolve(__dirname, './src/ui/foreground/Foreground.js'),
-    newtab: path.resolve(__dirname, './src/ui/newtab/Newtab.js'),
+    newtab: path.resolve(__dirname, './src/ui/newtab/Newtab.jsx'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -58,11 +57,6 @@ module.exports = {
       filename: 'options.html',
       template: 'src/ui/options/options.html',
       chunks: ['options'],
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'foreground.html',
-      template: 'src/ui/foreground/foreground.html',
-      chunks: ['foreground'],
     }),
     new HtmlWebpackPlugin({
       filename: 'newtab.html',
