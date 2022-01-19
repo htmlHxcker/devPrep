@@ -1,5 +1,5 @@
 {
-	"name": "Dev Prep",
+	"name": "PrepCard",
 	"version": "0.1.0",
 	"author": "htmlHxcker",
 	"manifest_version": 3,
@@ -11,20 +11,20 @@
 	"action": {
 		"default_popup": "popup.html",
 		"default_icon": {
-			"16": "devPrep16.png",
-			"32": "devPrepd32.png",
-			"48": "devPrep48.png",
-			"128": "devPrep128.png"
+			"16": "./images/PrepCard16.png",
+			"32": "./images/PrepCardd32.png",
+			"48": "./images/PrepCard48.png",
+			"128": "./images/PrepCard128.png"
 		}
 	},
 	"chrome_url_overrides": {
 		"newtab": "newtab.html"
 	},
-	"permissions": ["tabs", "storage"],
+	"permissions": ["tabs", "storage", "contextMenus", "activeTab"],
 	"icons": {
-		"16": "devPrep16.png",
-		"32": "devPrep32.png",
-		"48": "devPrep48.png",
-		"128": "devPrep128.png"
+		"16": "./images/PrepCard16.png",
+		"32": "./images/PrepCard32.png",
+		"48": "./images/PrepCard48.png",
+		"128": "./images/PrepCard128.png"
 	}
 }

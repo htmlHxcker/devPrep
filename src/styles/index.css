@@ -1,0 +1,61 @@
+@import url('./utilities.css');
+
+/* -------------------- */
+/* Reset               */
+/* -------------------- */
+
+/* Box Sizing */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Reset Margins */
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+picture {
+	margin: 0;
+}
+
+/* Set up the body */
+body {
+	font-family: var(--ff-josefin-sans);
+	font-size: var(--fs-400);
+	color: hsl(var(--clr-woodsmoke));
+	background-color: hsl(var(--clr-seashell));
+	line-height: 1.5;
+	max-height: 100vh;
+}
+
+/* Make Images easier to work with */
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+/* Make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+	border: none;
+	font: inherit;
+}
+
+/* Remove animations for people who have turned them off */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

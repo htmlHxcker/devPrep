@@ -1,0 +1,21 @@
+@import url('../../styles/utilities.css');
+
+.container--newtab {
+	margin: 2.5rem 0;
+}
+.container--card {
+	margin: 0 -2rem;
+}
+.floating-buttons {
+	position: relative;
+	top: 5rem;
+	left: -2rem;
+}
+.newtab-buttons {
+	display: inline-flex;
+	margin-inline: 1rem;
+	justify-content: center;
+	align-items: center;
+	--primary-btn-height: 4rem;
+	--primary-btn-width: 12rem;
+}

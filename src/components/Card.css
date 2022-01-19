@@ -1,0 +1,13 @@
+.active-card {
+	height: 19rem;
+	width: 50%;
+}
+.modify-icons {
+	position: absolute;
+	top: 16rem;
+	right: 23rem;
+	cursor: pointer;
+}
+.delete--container {
+	--modal-padding: 8rem 8rem 8rem 8rem;
+}

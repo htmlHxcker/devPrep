@@ -1,0 +1,40 @@
+.container--options {
+	display: grid;
+	height: 100vh;
+	width: 100vw;
+	padding-bottom: 2rem;
+	grid-template-rows: repeat(5, 1fr);
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas:
+		'title    title    title'
+		'general  general  extras'
+		'general  general  extras'
+		'import   import   extras'
+		'import   import   extras';
+	gap: 20px;
+}
+.panel {
+	padding: 2rem;
+}
+.title {
+	grid-area: title;
+	justify-content: space-between;
+	align-items: center;
+	--primary-btn-width: 20%;
+}
+.general-settings {
+	grid-area: general;
+}
+.username {
+	--input-width: 40%;
+}
+.import-options {
+	grid-area: import;
+}
+.extras {
+	grid-area: extras;
+}
+.contribute-btn {
+	position: relative;
+	top: 23rem;
+}
