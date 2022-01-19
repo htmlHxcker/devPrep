@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { render } from 'react-dom';
 import { Formik, Field, Form } from 'formik';
-import 'regenerator-runtime/runtime.js';
+import 'regenerator-runtime/runtime';
 import '../../styles/utilities.css';
 import '../../styles/index.css';
 import './options.css';
@@ -14,6 +14,7 @@ function Options() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSettings());
+    console.log(settings);
   }, [dispatch]);
   return (
     <div>
@@ -39,7 +40,7 @@ function Options() {
               <Field
                 name="username"
                 type="text"
-                placeholder="Jon"
+                placeholder="Peter Pan"
                 className="text-input username"
               />
             </label>
