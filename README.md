@@ -23,8 +23,6 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -171,5 +169,3 @@ Distributed under the MIT License.
 Project Link: [https://github.com/htmlHxcker/devPrep](https://github.com/htmlHxcker/devPrep)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-

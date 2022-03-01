@@ -1,12 +1,12 @@
 {
-	"name": "PrepCard",
+	"name": "prepcard",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev:local": "webpack-dev-server --config webpack.dev.js",
+		"dev": "webpack-dev-server --config webpack.dev.js",
 		"build": "webpack --config webpack.prod.js",
-		"dev": "webpack --watch --config webpack.dev.js"
+		"lint": "cd src && eslint ."
 	},
 	"keywords": [],
 	"author": "",
@@ -20,6 +20,12 @@
 		"clean-webpack-plugin": "^4.0.0",
 		"copy-webpack-plugin": "^10.1.0",
 		"css-loader": "^6.5.1",
+		"eslint": "8.2.0",
+		"eslint-config-airbnb": "19.0.4",
+		"eslint-plugin-import": "2.25.3",
+		"eslint-plugin-jsx-a11y": "6.5.1",
+		"eslint-plugin-react": "7.28.0",
+		"eslint-plugin-react-hooks": "4.3.0",
 		"html-loader": "^3.0.1",
 		"html-webpack-plugin": "^5.5.0",
 		"style-loader": "^3.3.1",
