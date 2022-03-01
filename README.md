@@ -1,73 +1,175 @@
-# PrepCard
+<div id="top"></div>
 
+
+
+
+<br />
 <div align="center">
-    <a href="#">
-        <img src="./public/images/PrepCard128.png" width="64" height="64" alt="PrepCards">
-    </a>
-    <h1>
-        <a href="#">
-            PrepCard
-        </a>
-    </h1>
+  <a href="https://github.com/github_username/repo_name">
+    <img src="./public/images/PrepCard128.png" alt="PrepCard Logo" width="80" height="80">
+  </a>
+
+<h3 align="center">PrepCards</h3>
+
+  <p align="center">
+    PrepCards is a Chrome extension that helps you remember things you're prone to forget by using flashcards.
+    <br />
+    <a href="#">Donwload on Chrome Webstore</a>
+    <br />
+    <a href="https://github.com/htmlHxcker/devPrep/issues/new?&template=bug_report.md">Report Bug</a>
+    <br />
+    <a href="https://github.com/htmlHxcker/devPrep/issues/new?template=feature_request.md">Request Feature</a>
+    <br />
+  </p>
 </div>
 
-#### Table of contents
 
-- [What is PrepCard?](#what-is-prepcard)
-- [Developing Locally and Contributing](#developing-locally-and-contributing)
-- [Contribution Guidlines](#Contribution-guidelines)
-- [Structure of the project](#structure-of-the-project)
-- [To Do:](#todo)
 
----
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-## What is PrepCard?
 
-<img src="./public/images/README/prepcard-newtab.png" alt="PrepCards New Tab Page">
 
-PrepCard is a project I conceived while learning Japanese along with some other
-people and preparing for technical interviews. I didn't know of
-[Anki](https://ankiweb.net), or any of it's contemporaries and decided that
-flashcards could be a good way for me to practice. This is the first project
-that I've embarked on where I was building software for other people (My
-_co-learners_) and so I had to think a lot about how an end user would interact
-with the extension.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+ 
+ <img src="./public/images/README/prepcard-newtab.png" alt="PrepCards on a new tab">
 
----
-## Getting Started 
- - install node...
- - ...
- - ...
- - ... fill me out
+PrepCards is a Chrome extension that uses Flashcards to help remind you of things you're prone to forget like when learning a new language or studying a totally new topic or anything you can think of as far as it can be represneted in text.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Contribution Guidlines
 
-- Tasks are created in Notion and used as a kanban system for organizing work
-- All PR's are required to be orgnized in feature branches following gitflow syntax. For example: `clinton(bug fix): cleaning console logs `
 
-## Architecture of the Project
-- Building the app based on a _Moqup_
-- Central state is stored in the Chromium browser implementation of
-  `localStorage` for extensions: [Link to example code on GitHub]
-- This central state only contains data that are required by more than one
-  top-level component i.e user settings are required by both the options and new
-  tab page: [Link to example code on GitHub]
-- The Central state is initialised in [background.js]() a script which runs in
-  the _background_ alongside the extension.
-- Component Specific state or _non-central_ state is stored in each component,
-  in the case of multiple low-level components requiring the same data from
-  state, such state is stored in the closest shared ancestor component [link to
-  code on GitHub]
-- All Top-level components (i.e Components found in the /src/ui folder) work on
-  the same principle as index.js/App.js / index.html in typical
-  create-react-apps when bundled.
-- Integration tests use the React testing library
-- styled-components is used for styling
+### Built With
 
-## To do: major features to add to augment this project:
 
-- Set up continuous integration to run the test suite and ESLint on every Pull
-  Request
-- Refactor some of the code. Especially this part [link to code on GitHub]
-- Add end-to-end tests with Cypress.
+* [React.js](https://reactjs.org/)
+* [Webpack](https://webpack.js.org/)
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+
+To setup PrepCards on your system follow the steps outlined below.
+
+### Prerequisites
+
+For this application to work you need Node and NPM 
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/htmlHxcker/devPrep.git
+   ```
+2. Install NPM packages
+   ```sh
+   cd devPrep
+   yarn install
+   ```
+3. Build an unpacked extension
+    ```sh
+       yarn run dev
+    ```
+4. Go to `chrome://extensions` in your browser and toggle developer mode, after that click "Load Unpacked" and select the generated `dist` folder.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+### Language Learning: 
+You can use this extension to build vocabulary while learning another language
+ <img src="./public/images/README/language-learning.png" alt="Language Learning">
+
+### Technical Interviews:
+You can also use this to brush up on theoretical knowledge before technical interviews.
+<img src="./public/images/README/technical-interviews.png" alt="Technical Interview">
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [ ] Dark Mode
+- [ ] Spaced Repetition System
+
+
+See the [open issues](https://github.com/htmlHxcker/devPrep/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Project Link: [https://github.com/htmlHxcker/devPrep](https://github.com/htmlHxcker/devPrep)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
