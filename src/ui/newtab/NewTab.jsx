@@ -51,8 +51,7 @@ function NewTab() {
         <div>
           <h2 className="ff-cardo fs-900">
             Hello
-            {' '}
-            {settings.username ? settings.username : '!'}
+            {settings.username ? `, ${settings.username}` : '!'}
           </h2>
         </div>
         <div className="text-right">
