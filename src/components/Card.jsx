@@ -24,16 +24,16 @@ function Card({ isCardFlipped, flipCard }) {
             <div className="text-right flex modify-icons">
               <span
                 onClick={() => {
-								  dispatch({ type: 'EDIT_CARD_MODAL', payload: true });
+                  dispatch({ type: 'EDIT_CARD_MODAL', payload: true });
                 }}
               >
                 <FiEdit2 size={25} />
               </span>
               <span
                 onClick={() => {
-								  dispatch({ type: 'DELETE_CARD_MODAL', payload: true });
+                  dispatch({ type: 'DELETE_CARD_MODAL', payload: true });
                 }}
-                role={}
+
               >
                 <FiTrash2 size={25} color="red" />
               </span>
