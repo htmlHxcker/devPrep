@@ -81,11 +81,20 @@ To setup PrepCards on your system follow the steps outlined below.
 
 ### Prerequisites
 
-For this application to work you need Node and NPM
+For this application to work you need Node and Yarn
 * npm
   ```sh
   npm install npm@latest -g
   ```
+* Yarn
+Enable corepack (Node.js >=16.10)
+```sh
+corepack enable
+```
+Node.js <16.10
+```sh
+npm i -g corepack
+```
 
 ### Installation
 
