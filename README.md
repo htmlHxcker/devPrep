@@ -14,7 +14,7 @@
   <p align="center">
     PrepCards is a Chrome extension that helps you remember things you're prone to forget by using flashcards.
     <br />
-    <a href="#">Donwload on Chrome Webstore</a>
+    <a href="https://chrome.google.com/webstore/detail/prepcard/lkmncgofmndgbeokbakfhhdhcjphmbph">Donwload on Chrome Webstore</a>
     <br />
     <a href="https://github.com/htmlHxcker/devPrep/issues/new?&template=bug_report.md">Report Bug</a>
     <br />
