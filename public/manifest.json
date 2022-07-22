@@ -1,35 +1,30 @@
 {
-	"name": "PrepCard",
-	"version": "0.1.0",
-	"author": "htmlHxcker",
-	"manifest_version": 3,
-	"description": "An extension to help you practice things you're prone to forget using Flashcards.",
-	"background": {
-		"service_worker": "./background.js"
-	},
-	"options_page": "options.html",
-	"action": {
-		"default_popup": "popup.html",
-		"default_icon": {
-			"16": "./images/PrepCard16.png",
-			"32": "./images/PrepCard32.png",
-			"48": "./images/PrepCard48.png",
-			"128": "./images/PrepCard128.png"
-		}
-	},
-	"chrome_url_overrides": {
-		"newtab": "newtab.html"
-	},
-	"permissions": [
-		"tabs",
-		"storage",
-		"contextMenus",
-		"activeTab"
-	],
-	"icons": {
-		"16": "./images/PrepCard16.png",
-		"32": "./images/PrepCard32.png",
-		"48": "./images/PrepCard48.png",
-		"128": "./images/PrepCard128.png"
-	}
+  "name": "PrepCard",
+  "version": "0.1.0",
+  "author": "htmlHxcker",
+  "manifest_version": 3,
+  "description": "An extension to help you practice things you're prone to forget using Flashcards.",
+  "background": {
+    "service_worker": "./background.js"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "./images/PrepCard16.png",
+      "32": "./images/PrepCard32.png",
+      "48": "./images/PrepCard48.png",
+      "128": "./images/PrepCard128.png"
+    }
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": ["tabs", "storage", "contextMenus", "activeTab"],
+  "icons": {
+    "16": "./images/PrepCard16.png",
+    "32": "./images/PrepCard32.png",
+    "48": "./images/PrepCard48.png",
+    "128": "./images/PrepCard128.png"
+  }
 }
